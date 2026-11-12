@@ -54,9 +54,12 @@ class Settings(BaseSettings):
             raise ValueError("Ollama URL must contain a valid hostname.")
 
         try:
-            parsed_url.port
+            port = parsed_url.port
         except ValueError as exc:
             raise ValueError("Ollama URL contains an invalid port.") from exc
+
+        if port is not None and not 1 <= port <= 65535:
+            raise ValueError("Ollama URL contains an invalid port.")
 
         return value.rstrip("/")
 
