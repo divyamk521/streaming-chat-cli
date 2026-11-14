@@ -1,8 +1,9 @@
 """Common interfaces and data structures for LLM providers."""
 
 from abc import ABC, abstractmethod
+from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import Iterator, Literal, TypedDict
+from typing import Literal, TypedDict
 
 
 class ChatMessage(TypedDict):

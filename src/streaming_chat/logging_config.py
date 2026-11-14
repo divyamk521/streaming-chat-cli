@@ -2,7 +2,7 @@
 
 import json
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import TextIO
 
 
@@ -14,7 +14,7 @@ class JsonFormatter(logging.Formatter):
         log_entry: dict[str, str] = {
             "timestamp": datetime.fromtimestamp(
                 record.created,
-                tz=timezone.utc,
+                tz=UTC,
             ).isoformat(),
             "level": record.levelname,
             "logger": record.name,
